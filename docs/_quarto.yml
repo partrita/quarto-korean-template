@@ -33,9 +33,11 @@ format:
     include-in-header: 
       text: |
         \usepackage{pdfpages}
-
-mainfont: "../fonts/KoPubWorld Batang Medium.ttf"
-sansfont: "../fonts/KoPubWorld Dotum Medium.ttf"
+    pdf-engine: xelatex
+    mainfont: "KoPubWorld Batang"
+    mainfontoptions: Scale=MatchLowercase
+    sansfont: "KoPubWorld Dotum"
+    sansfontoptions: Scale=MatchLowercase
 
 
 

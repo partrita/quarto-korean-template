@@ -22,7 +22,6 @@ jobs:
           sudo cp ./fonts/* /usr/local/share/fonts/custom/
           # Update font cache
           sudo fc-cache -fv
-
       - name: Setup Pixi
         uses: prefix-dev/setup-pixi@v0.8.10
         with:
@@ -32,18 +31,22 @@ jobs:
       - name: Add Quarto and Font packages to Pixi environment
         run: |
           pixi install
+      
+      - name: Cache TinyTeX
+        uses: actions/cache@v4
+        with:
+          path: ~/.TinyTeX
+          key: ${{ runner.os }}-tinytex
 
       - name: Install TinyTeX via Quarto
         run: |
           pixi run quarto install tool tinytex
-
       - name: Render Quarto book to PDF
         # 이 단계는 Quarto 프로젝트 파일(예: .qmd 파일)이 리포지토리의
         # 'docs'이라는 디렉토리 내에 있다고 가정합니다.
         run: |
           cd docs
           pixi run quarto render --to pdf
-
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
