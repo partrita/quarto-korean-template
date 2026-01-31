@@ -34,10 +34,8 @@ format:
       text: |
         \usepackage{pdfpages}
     pdf-engine: xelatex
-    mainfont: "../fonts/KoPubWorld Batang Medium.ttf"
-    mainfontoptions: Scale=MatchLowercase
-    sansfont: "../fonts/KoPubWorld Dotum Medium.ttf"
-    sansfontoptions: Scale=MatchLowercase
+    mainfont: "Noto Serif CJK KR"
+    sansfont: "Noto Sans CJK KR"
 
 
 
