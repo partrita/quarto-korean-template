@@ -16,11 +16,12 @@ jobs:
 
       - name: Install Fonts
         run: |
-          cp ./fonts/ /usr/local/share/fonts/
-        #   # 시스템 업데이트 및 Noto CJK 폰트 패키지 설치
-        #   sudo apt-get update
-        #   sudo apt-get install -y --no-install-recommends fonts-noto-cjk fontconfig locales
-        #   sudo rm -rf /var/lib/apt/lists/*
+          # Create a custom directory for project fonts
+          sudo mkdir -p /usr/local/share/fonts/custom
+          # Copy fonts with sudo
+          sudo cp ./fonts/* /usr/local/share/fonts/custom/
+          # Update font cache
+          sudo fc-cache -fv
 
       - name: Setup Pixi
         uses: prefix-dev/setup-pixi@v0.8.10
@@ -35,11 +36,6 @@ jobs:
       - name: Install TinyTeX via Quarto
         run: |
           pixi run quarto install tool tinytex
-
-      - name: Update TinyTeX font cache
-        run: |
-          # fc-cache -fv 명령은 Noto CJK 폰트가 설치된 후 캐시를 업데이트합니다.
-          sudo fc-cache -fv
 
       - name: Render Quarto book to PDF
         # 이 단계는 Quarto 프로젝트 파일(예: .qmd 파일)이 리포지토리의
