@@ -1,0 +1,41 @@
+project:
+  type: book
+
+book:
+  title: "mybook"
+  author: "Norah Jones"
+  date: "1/31/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: report
+    papersize: a4
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+    fig_width: 3
+    fig_height: 2
+    fig_caption: true
+    df_print: kable
+    highlight: tango
+    include-in-header: 
+      text: |
+        \usepackage{pdfpages}
+
+mainfont: "../fonts/KoPubWorld Batang Medium.ttf"
+sansfont: "../fonts/KoPubWorld Dotum Medium.ttf"
+
+
+

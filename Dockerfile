@@ -50,5 +50,6 @@ RUN pixi run quarto install tool tinytex
 # RUN sudo fc-cache -fv
 
 # Quarto 프로젝트를 렌더링하는 예시 (컨테이너 시작 시 자동으로 실행)
-COPY mybook/ ./mybook/
-CMD cd mybook && pixi run quarto render --to pdf
+COPY docs/ ./docs/
+COPY fonts/ ./fonts/
+CMD cd docs && pixi run quarto render --to pdf

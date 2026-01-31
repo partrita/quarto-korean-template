@@ -14,12 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Noto CJK Fonts and set locale
+      - name: Install Fonts
         run: |
-          # 시스템 업데이트 및 Noto CJK 폰트 패키지 설치
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends fonts-noto-cjk fontconfig locales
-          sudo rm -rf /var/lib/apt/lists/*
+          # Create a custom directory for project fonts
+          sudo mkdir -p /usr/local/share/fonts/custom
+          # Copy fonts with sudo
+          sudo cp ./fonts/* /usr/local/share/fonts/custom/
+          # Update font cache
+          sudo fc-cache -fv
 
       - name: Setup Pixi
         uses: prefix-dev/setup-pixi@v0.8.10
@@ -35,23 +37,18 @@ jobs:
         run: |
           pixi run quarto install tool tinytex
 
-      - name: Update TinyTeX font cache
-        run: |
-          # fc-cache -fv 명령은 Noto CJK 폰트가 설치된 후 캐시를 업데이트합니다.
-          sudo fc-cache -fv
-
       - name: Render Quarto book to PDF
         # 이 단계는 Quarto 프로젝트 파일(예: .qmd 파일)이 리포지토리의
-        # 'mybook'이라는 디렉토리 내에 있다고 가정합니다.
+        # 'docs'이라는 디렉토리 내에 있다고 가정합니다.
         run: |
-          cd mybook
+          cd docs
           pixi run quarto render --to pdf
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: quarto-pdf-book
-          path: mybook/_book/mybook.pdf
+          path: docs/_book/mybook.pdf
           # 생성된 PDF 파일을 'quarto-pdf-book'이라는 이름의 아티팩트로 업로드합니다.
 
   create-release:
