@@ -16,7 +16,7 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - cosmo
+      - default
       - brand
   pdf:
     documentclass: report
