@@ -34,9 +34,9 @@ format:
       text: |
         \usepackage{pdfpages}
     pdf-engine: xelatex
-    mainfont: "KoPubWorld Batang"
+    mainfont: "../fonts/KoPubWorld Batang Medium.ttf"
     mainfontoptions: Scale=MatchLowercase
-    sansfont: "KoPubWorld Dotum"
+    sansfont: "../fonts/KoPubWorld Dotum Medium.ttf"
     sansfontoptions: Scale=MatchLowercase
 
 

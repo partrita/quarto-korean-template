@@ -14,14 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Fonts
-        run: |
-          # Create a custom directory for project fonts
-          sudo mkdir -p /usr/local/share/fonts/custom
-          # Copy fonts with sudo
-          sudo cp ./fonts/* /usr/local/share/fonts/custom/
-          # Update font cache
-          sudo fc-cache -fv
       - name: Setup Pixi
         uses: prefix-dev/setup-pixi@v0.8.10
         with:
