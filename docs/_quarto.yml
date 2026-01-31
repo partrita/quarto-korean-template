@@ -19,7 +19,23 @@ format:
       - cosmo
       - brand
   pdf:
-    documentclass: scrreprt
+    documentclass: report
+    papersize: a4
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+    fig_width: 3
+    fig_height: 2
+    fig_caption: true
+    df_print: kable
+    highlight: tango
+    include-in-header: 
+      text: |
+        \usepackage{pdfpages}
+
+mainfont: "../fonts/KoPubWorld Batang Medium.ttf"
+sansfont: "../fonts/KoPubWorld Dotum Medium.ttf"
 
 
 
