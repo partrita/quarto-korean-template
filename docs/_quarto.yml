@@ -16,7 +16,7 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - default
+      - flatly
       - brand
   pdf:
     documentclass: report
